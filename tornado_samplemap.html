@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d419bdb12e3acc1a811adcb1b89a547d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: white; padding: 10px; border: 1px solid #888; font-size: 12px;">
+<b>EF Scale</b><br>
+<span style="display:inline-block;width:12px;height:12px;background:#bde6ff;border:1px solid #999;"></span> EF0<br>
+<span style="display:inline-block;width:12px;height:12px;background:#8fd3ff;border:1px solid #999;"></span> EF1<br>
+<span style="display:inline-block;width:12px;height:12px;background:#5db9ff;border:1px solid #999;"></span> EF2<br>
+<span style="display:inline-block;width:12px;height:12px;background:#ff8c66;border:1px solid #999;"></span> EF3<br>
+<span style="display:inline-block;width:12px;height:12px;background:#ff5a36;border:1px solid #999;"></span> EF4<br>
+<span style="display:inline-block;width:12px;height:12px;background:#d00000;border:1px solid #999;"></span> EF5+
+</div>
+    
+            <div class="folium-map" id="map_d419bdb12e3acc1a811adcb1b89a547d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d419bdb12e3acc1a811adcb1b89a547d = L.map(
+                "map_d419bdb12e3acc1a811adcb1b89a547d",
+                {
+                    center: [35.117000000000004, -96.7495],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_476d6a14d45c264f17977b8979cea846 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_476d6a14d45c264f17977b8979cea846.addTo(map_d419bdb12e3acc1a811adcb1b89a547d);
+        
+    
+            var marker_cluster_0a2b4df1581a67b80624825b8487ea6f = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_f9a8e98df1baea5c8fa45a2b8983e825 = L.circleMarker(
+                [33.15, -96.82],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_76f5c20e3b03383fec5c24ea898c83e2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e6714b65cb039eba18c3aa731d3c9ae7 = $(`<div id="html_e6714b65cb039eba18c3aa731d3c9ae7" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0001<br><b>Place:</b> Frisco<br><b>State:</b> TX<br><b>EF:</b> EF0<br><b>Time:</b> 2024-04-27T15:30:00</div>`)[0];
+                popup_76f5c20e3b03383fec5c24ea898c83e2.setContent(html_e6714b65cb039eba18c3aa731d3c9ae7);
+            
+        
+
+        circle_marker_f9a8e98df1baea5c8fa45a2b8983e825.bindPopup(popup_76f5c20e3b03383fec5c24ea898c83e2)
+        ;
+
+        
+    
+    
+            var circle_marker_7cae1e4968b5a7c67c7b49ccc7b0c151 = L.circleMarker(
+                [33.019, -96.699],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_9903fe8ee8ca52c914816e316335735b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d85d8180becd81012101236e14501cfe = $(`<div id="html_d85d8180becd81012101236e14501cfe" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0002<br><b>Place:</b> Plano<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-04-27T16:10:00</div>`)[0];
+                popup_9903fe8ee8ca52c914816e316335735b.setContent(html_d85d8180becd81012101236e14501cfe);
+            
+        
+
+        circle_marker_7cae1e4968b5a7c67c7b49ccc7b0c151.bindPopup(popup_9903fe8ee8ca52c914816e316335735b)
+        ;
+
+        
+    
+    
+            var circle_marker_596c80c70358b8525f8d06043cf0ee03 = L.circleMarker(
+                [32.776, -96.797],
+                {"bubblingMouseEvents": true, "color": "#5db9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5db9ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_bb9b21c3a06350bb6dacb9e624d8305f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cb40122604a0dafb8b6291cbb51b1148 = $(`<div id="html_cb40122604a0dafb8b6291cbb51b1148" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0003<br><b>Place:</b> Dallas<br><b>State:</b> TX<br><b>EF:</b> EF2<br><b>Time:</b> 2024-04-27T17:05:00</div>`)[0];
+                popup_bb9b21c3a06350bb6dacb9e624d8305f.setContent(html_cb40122604a0dafb8b6291cbb51b1148);
+            
+        
+
+        circle_marker_596c80c70358b8525f8d06043cf0ee03.bindPopup(popup_bb9b21c3a06350bb6dacb9e624d8305f)
+        ;
+
+        
+    
+    
+            var circle_marker_511cff858e6be56661282bb956a09ac5 = L.circleMarker(
+                [35.467, -97.516],
+                {"bubblingMouseEvents": true, "color": "#ff8c66", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff8c66", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_f3b118b643246893096075e04d7ddce3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5612e457775caa733225c8e4c54874b1 = $(`<div id="html_5612e457775caa733225c8e4c54874b1" style="width: 100.0%; height: 100.0%;"><b>ID:</b> OK-0004<br><b>Place:</b> Oklahoma City<br><b>State:</b> OK<br><b>EF:</b> EF3<br><b>Time:</b> 2024-05-01T18:20:00</div>`)[0];
+                popup_f3b118b643246893096075e04d7ddce3.setContent(html_5612e457775caa733225c8e4c54874b1);
+            
+        
+
+        circle_marker_511cff858e6be56661282bb956a09ac5.bindPopup(popup_f3b118b643246893096075e04d7ddce3)
+        ;
+
+        
+    
+    
+            var circle_marker_b76ebfa0351b2e5827840cbb599c8148 = L.circleMarker(
+                [36.154, -95.992],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_7563ebceef84a246dc2ba7afa174684b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d957a8ee11926ffd2b45943d8d0584c2 = $(`<div id="html_d957a8ee11926ffd2b45943d8d0584c2" style="width: 100.0%; height: 100.0%;"><b>ID:</b> OK-0005<br><b>Place:</b> Tulsa<br><b>State:</b> OK<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-02T19:00:00</div>`)[0];
+                popup_7563ebceef84a246dc2ba7afa174684b.setContent(html_d957a8ee11926ffd2b45943d8d0584c2);
+            
+        
+
+        circle_marker_b76ebfa0351b2e5827840cbb599c8148.bindPopup(popup_7563ebceef84a246dc2ba7afa174684b)
+        ;
+
+        
+    
+    
+            var circle_marker_49e2f8bee93030e5c9650d5d8bf97228 = L.circleMarker(
+                [39.739, -104.99],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_3a80a2fc388bde847f469cb36adb2291 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d46f3745e5a377ab14b6c0f2480bb066 = $(`<div id="html_d46f3745e5a377ab14b6c0f2480bb066" style="width: 100.0%; height: 100.0%;"><b>ID:</b> CO-0006<br><b>Place:</b> Denver<br><b>State:</b> CO<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-03T20:40:00</div>`)[0];
+                popup_3a80a2fc388bde847f469cb36adb2291.setContent(html_d46f3745e5a377ab14b6c0f2480bb066);
+            
+        
+
+        circle_marker_49e2f8bee93030e5c9650d5d8bf97228.bindPopup(popup_3a80a2fc388bde847f469cb36adb2291)
+        ;
+
+        
+    
+    
+            var circle_marker_a95f5cf927f804ef52ffe66053a42187 = L.circleMarker(
+                [34.746, -92.289],
+                {"bubblingMouseEvents": true, "color": "#5db9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5db9ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_77a6b7c0be67794c758678ad845fe624 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9b9a2f30ad40513e575588e10e29feec = $(`<div id="html_9b9a2f30ad40513e575588e10e29feec" style="width: 100.0%; height: 100.0%;"><b>ID:</b> AR-0007<br><b>Place:</b> Little Rock<br><b>State:</b> AR<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-10T16:30:00</div>`)[0];
+                popup_77a6b7c0be67794c758678ad845fe624.setContent(html_9b9a2f30ad40513e575588e10e29feec);
+            
+        
+
+        circle_marker_a95f5cf927f804ef52ffe66053a42187.bindPopup(popup_77a6b7c0be67794c758678ad845fe624)
+        ;
+
+        
+    
+    
+            var circle_marker_8f93020cbec9afa8229e6a9227a58d37 = L.circleMarker(
+                [38.627, -90.199],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_d1fa474a09bc757e1a68b24e8d611faa = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3535710fbe87e6317a8ceb03cd6dd7b9 = $(`<div id="html_3535710fbe87e6317a8ceb03cd6dd7b9" style="width: 100.0%; height: 100.0%;"><b>ID:</b> MO-0008<br><b>Place:</b> St. Louis<br><b>State:</b> MO<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-12T15:20:00</div>`)[0];
+                popup_d1fa474a09bc757e1a68b24e8d611faa.setContent(html_3535710fbe87e6317a8ceb03cd6dd7b9);
+            
+        
+
+        circle_marker_8f93020cbec9afa8229e6a9227a58d37.bindPopup(popup_d1fa474a09bc757e1a68b24e8d611faa)
+        ;
+
+        
+    
+    
+            var circle_marker_22c5ec5de76103a43fc44270944b1c0f = L.circleMarker(
+                [41.586, -93.625],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_529961a70c02e18ee9895b77c77ace0b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_0d4ae35e8d3d6035a92840711e0f0cb2 = $(`<div id="html_0d4ae35e8d3d6035a92840711e0f0cb2" style="width: 100.0%; height: 100.0%;"><b>ID:</b> IA-0009<br><b>Place:</b> Des Moines<br><b>State:</b> IA<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-13T18:15:00</div>`)[0];
+                popup_529961a70c02e18ee9895b77c77ace0b.setContent(html_0d4ae35e8d3d6035a92840711e0f0cb2);
+            
+        
+
+        circle_marker_22c5ec5de76103a43fc44270944b1c0f.bindPopup(popup_529961a70c02e18ee9895b77c77ace0b)
+        ;
+
+        
+    
+    
+            var circle_marker_222f642a6874b2be7dec1bf85cc30f9b = L.circleMarker(
+                [39.099, -94.578],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_b6c60bcaea32393268fe40b156e73754 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4d1fec3f48ed70da7b4df5654916b8a6 = $(`<div id="html_4d1fec3f48ed70da7b4df5654916b8a6" style="width: 100.0%; height: 100.0%;"><b>ID:</b> MO-0010<br><b>Place:</b> Kansas City<br><b>State:</b> MO<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-15T19:05:00</div>`)[0];
+                popup_b6c60bcaea32393268fe40b156e73754.setContent(html_4d1fec3f48ed70da7b4df5654916b8a6);
+            
+        
+
+        circle_marker_222f642a6874b2be7dec1bf85cc30f9b.bindPopup(popup_b6c60bcaea32393268fe40b156e73754)
+        ;
+
+        
+    
+    
+            var circle_marker_01c66791ed6c2f36aac6d4e4725e54ba = L.circleMarker(
+                [40.813, -96.702],
+                {"bubblingMouseEvents": true, "color": "#5db9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5db9ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_b660ddcafe69c3a2039d4ab4554cc1ed = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c65958cc06bc072b522fb56972b29559 = $(`<div id="html_c65958cc06bc072b522fb56972b29559" style="width: 100.0%; height: 100.0%;"><b>ID:</b> NE-0011<br><b>Place:</b> Lincoln<br><b>State:</b> NE<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-18T20:45:00</div>`)[0];
+                popup_b660ddcafe69c3a2039d4ab4554cc1ed.setContent(html_c65958cc06bc072b522fb56972b29559);
+            
+        
+
+        circle_marker_01c66791ed6c2f36aac6d4e4725e54ba.bindPopup(popup_b660ddcafe69c3a2039d4ab4554cc1ed)
+        ;
+
+        
+    
+    
+            var circle_marker_9db07e3a7c628ad70c5e5e50157a51c1 = L.circleMarker(
+                [41.257, -95.995],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_334edb40fb49160136ab4f4cd95ea04b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_11f4d2c88c271b73a83ba38309955cff = $(`<div id="html_11f4d2c88c271b73a83ba38309955cff" style="width: 100.0%; height: 100.0%;"><b>ID:</b> NE-0012<br><b>Place:</b> Omaha<br><b>State:</b> NE<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-20T21:10:00</div>`)[0];
+                popup_334edb40fb49160136ab4f4cd95ea04b.setContent(html_11f4d2c88c271b73a83ba38309955cff);
+            
+        
+
+        circle_marker_9db07e3a7c628ad70c5e5e50157a51c1.bindPopup(popup_334edb40fb49160136ab4f4cd95ea04b)
+        ;
+
+        
+    
+    
+            var circle_marker_4e94fe5681d690f8458a1cc088ccab66 = L.circleMarker(
+                [35.149, -90.049],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_64709cfcfb593b45706d1cb8afb6d592 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6e0613090bf098f6aa0cc84098e3800e = $(`<div id="html_6e0613090bf098f6aa0cc84098e3800e" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TN-0013<br><b>Place:</b> Memphis<br><b>State:</b> TN<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-22T17:35:00</div>`)[0];
+                popup_64709cfcfb593b45706d1cb8afb6d592.setContent(html_6e0613090bf098f6aa0cc84098e3800e);
+            
+        
+
+        circle_marker_4e94fe5681d690f8458a1cc088ccab66.bindPopup(popup_64709cfcfb593b45706d1cb8afb6d592)
+        ;
+
+        
+    
+    
+            var circle_marker_870f7791b8fba8a47951e1ef3f5906ee = L.circleMarker(
+                [36.174, -115.139],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_6a55f0110270742cc3f1bae295fbe64b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d1fa95fb7b0608e09599c349bbfc4f47 = $(`<div id="html_d1fa95fb7b0608e09599c349bbfc4f47" style="width: 100.0%; height: 100.0%;"><b>ID:</b> LV-0014<br><b>Place:</b> Las Vegas<br><b>State:</b> NV<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-24T18:50:00</div>`)[0];
+                popup_6a55f0110270742cc3f1bae295fbe64b.setContent(html_d1fa95fb7b0608e09599c349bbfc4f47);
+            
+        
+
+        circle_marker_870f7791b8fba8a47951e1ef3f5906ee.bindPopup(popup_6a55f0110270742cc3f1bae295fbe64b)
+        ;
+
+        
+    
+    
+            var circle_marker_4aace04bd2d6fc22285fdd0fc190796e = L.circleMarker(
+                [29.76, -95.369],
+                {"bubblingMouseEvents": true, "color": "#5db9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5db9ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_08f832ba7adb7ea975a12e8b87212637 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9af4a51a3013500c36fbb67a5936a950 = $(`<div id="html_9af4a51a3013500c36fbb67a5936a950" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0015<br><b>Place:</b> Houston<br><b>State:</b> TX<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-26T16:55:00</div>`)[0];
+                popup_08f832ba7adb7ea975a12e8b87212637.setContent(html_9af4a51a3013500c36fbb67a5936a950);
+            
+        
+
+        circle_marker_4aace04bd2d6fc22285fdd0fc190796e.bindPopup(popup_08f832ba7adb7ea975a12e8b87212637)
+        ;
+
+        
+    
+    
+            var circle_marker_dc3e90208f6e429de13308b6e94143eb = L.circleMarker(
+                [30.267, -97.743],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_d268d58c995893a67a5efc31bf12681e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_60e531ffa1f54c7d919f83e1d14cee54 = $(`<div id="html_60e531ffa1f54c7d919f83e1d14cee54" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0016<br><b>Place:</b> Austin<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-28T19:40:00</div>`)[0];
+                popup_d268d58c995893a67a5efc31bf12681e.setContent(html_60e531ffa1f54c7d919f83e1d14cee54);
+            
+        
+
+        circle_marker_dc3e90208f6e429de13308b6e94143eb.bindPopup(popup_d268d58c995893a67a5efc31bf12681e)
+        ;
+
+        
+    
+    
+            var circle_marker_3b69421947a8aeae756698c2fc40a365 = L.circleMarker(
+                [35.085, -106.65],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_a0bc09e5d9fe2fbaa5981563e1ba384e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_5ccf7d0fcbd6593833e66920b8437dbe = $(`<div id="html_5ccf7d0fcbd6593833e66920b8437dbe" style="width: 100.0%; height: 100.0%;"><b>ID:</b> NM-0017<br><b>Place:</b> Albuquerque<br><b>State:</b> NM<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-01T18:05:00</div>`)[0];
+                popup_a0bc09e5d9fe2fbaa5981563e1ba384e.setContent(html_5ccf7d0fcbd6593833e66920b8437dbe);
+            
+        
+
+        circle_marker_3b69421947a8aeae756698c2fc40a365.bindPopup(popup_a0bc09e5d9fe2fbaa5981563e1ba384e)
+        ;
+
+        
+    
+    
+            var circle_marker_86bec6f19c2cfb68a1d56d2621734a0b = L.circleMarker(
+                [33.448, -112.074],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_8d956cc05be03f57fb4d3e0911fbb9c9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_531ab9962b38437a44c193e386470e67 = $(`<div id="html_531ab9962b38437a44c193e386470e67" style="width: 100.0%; height: 100.0%;"><b>ID:</b> AZ-0018<br><b>Place:</b> Phoenix<br><b>State:</b> AZ<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-03T17:45:00</div>`)[0];
+                popup_8d956cc05be03f57fb4d3e0911fbb9c9.setContent(html_531ab9962b38437a44c193e386470e67);
+            
+        
+
+        circle_marker_86bec6f19c2cfb68a1d56d2621734a0b.bindPopup(popup_8d956cc05be03f57fb4d3e0911fbb9c9)
+        ;
+
+        
+    
+    
+            var circle_marker_dc619c632578ae973d7c56349eea49ae = L.circleMarker(
+                [29.424, -98.494],
+                {"bubblingMouseEvents": true, "color": "#8fd3ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fd3ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_d9313611a1b116a26de115ecd24caaed = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e149dc668bef4ac29980837c66f2b7d0 = $(`<div id="html_e149dc668bef4ac29980837c66f2b7d0" style="width: 100.0%; height: 100.0%;"><b>ID:</b> TX-0019<br><b>Place:</b> San Antonio<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-06-05T16:30:00</div>`)[0];
+                popup_d9313611a1b116a26de115ecd24caaed.setContent(html_e149dc668bef4ac29980837c66f2b7d0);
+            
+        
+
+        circle_marker_dc619c632578ae973d7c56349eea49ae.bindPopup(popup_d9313611a1b116a26de115ecd24caaed)
+        ;
+
+        
+    
+    
+            var circle_marker_c4a2565b4d8e8ad6f6240d234750334b = L.circleMarker(
+                [32.222, -110.974],
+                {"bubblingMouseEvents": true, "color": "#bde6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bde6ff", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_0a2b4df1581a67b80624825b8487ea6f);
+        
+    
+        var popup_58363cbc21d4a445d253c583a9020e9d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_019a51e5fec521ef87a1dc3866a33699 = $(`<div id="html_019a51e5fec521ef87a1dc3866a33699" style="width: 100.0%; height: 100.0%;"><b>ID:</b> AZ-0020<br><b>Place:</b> Tucson<br><b>State:</b> AZ<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-07T18:25:00</div>`)[0];
+                popup_58363cbc21d4a445d253c583a9020e9d.setContent(html_019a51e5fec521ef87a1dc3866a33699);
+            
+        
+
+        circle_marker_c4a2565b4d8e8ad6f6240d234750334b.bindPopup(popup_58363cbc21d4a445d253c583a9020e9d)
+        ;
+
+        
+    
+    
+            marker_cluster_0a2b4df1581a67b80624825b8487ea6f.addTo(map_d419bdb12e3acc1a811adcb1b89a547d);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD HH:mm:ss");
+                }
+            });
+            map_d419bdb12e3acc1a811adcb1b89a547d.timeDimension = L.timeDimension(
+                {
+                    period: "P1D",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {
+  "position": "bottomleft",
+  "minSpeed": 0.1,
+  "maxSpeed": 10,
+  "autoPlay": true,
+  "loopButton": false,
+  "timeSliderDragUpdate": false,
+  "speedSlider": true,
+  "playerOptions": {
+  "transitionTime": 200,
+  "loop": true,
+  "startOver": true,
+},
+}
+            );
+            map_d419bdb12e3acc1a811adcb1b89a547d.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"time": "2024-04-27T15:30:00", "popup": "<b>ID:</b> TX-0001<br><b>Place:</b> Frisco<br><b>State:</b> TX<br><b>EF:</b> EF0<br><b>Time:</b> 2024-04-27T15:30:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-96.82, 33.15]}}, {"type": "Feature", "properties": {"time": "2024-04-27T16:10:00", "popup": "<b>ID:</b> TX-0002<br><b>Place:</b> Plano<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-04-27T16:10:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-96.699, 33.019]}}, {"type": "Feature", "properties": {"time": "2024-04-27T17:05:00", "popup": "<b>ID:</b> TX-0003<br><b>Place:</b> Dallas<br><b>State:</b> TX<br><b>EF:</b> EF2<br><b>Time:</b> 2024-04-27T17:05:00", "ef": "EF2", "ef_num": 2.0}, "geometry": {"type": "Point", "coordinates": [-96.797, 32.776]}}, {"type": "Feature", "properties": {"time": "2024-05-01T18:20:00", "popup": "<b>ID:</b> OK-0004<br><b>Place:</b> Oklahoma City<br><b>State:</b> OK<br><b>EF:</b> EF3<br><b>Time:</b> 2024-05-01T18:20:00", "ef": "EF3", "ef_num": 3.0}, "geometry": {"type": "Point", "coordinates": [-97.516, 35.467]}}, {"type": "Feature", "properties": {"time": "2024-05-02T19:00:00", "popup": "<b>ID:</b> OK-0005<br><b>Place:</b> Tulsa<br><b>State:</b> OK<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-02T19:00:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-95.992, 36.154]}}, {"type": "Feature", "properties": {"time": "2024-05-03T20:40:00", "popup": "<b>ID:</b> CO-0006<br><b>Place:</b> Denver<br><b>State:</b> CO<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-03T20:40:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-104.99, 39.739]}}, {"type": "Feature", "properties": {"time": "2024-05-10T16:30:00", "popup": "<b>ID:</b> AR-0007<br><b>Place:</b> Little Rock<br><b>State:</b> AR<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-10T16:30:00", "ef": "EF2", "ef_num": 2.0}, "geometry": {"type": "Point", "coordinates": [-92.289, 34.746]}}, {"type": "Feature", "properties": {"time": "2024-05-12T15:20:00", "popup": "<b>ID:</b> MO-0008<br><b>Place:</b> St. Louis<br><b>State:</b> MO<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-12T15:20:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-90.199, 38.627]}}, {"type": "Feature", "properties": {"time": "2024-05-13T18:15:00", "popup": "<b>ID:</b> IA-0009<br><b>Place:</b> Des Moines<br><b>State:</b> IA<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-13T18:15:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-93.625, 41.586]}}, {"type": "Feature", "properties": {"time": "2024-05-15T19:05:00", "popup": "<b>ID:</b> MO-0010<br><b>Place:</b> Kansas City<br><b>State:</b> MO<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-15T19:05:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-94.578, 39.099]}}, {"type": "Feature", "properties": {"time": "2024-05-18T20:45:00", "popup": "<b>ID:</b> NE-0011<br><b>Place:</b> Lincoln<br><b>State:</b> NE<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-18T20:45:00", "ef": "EF2", "ef_num": 2.0}, "geometry": {"type": "Point", "coordinates": [-96.702, 40.813]}}, {"type": "Feature", "properties": {"time": "2024-05-20T21:10:00", "popup": "<b>ID:</b> NE-0012<br><b>Place:</b> Omaha<br><b>State:</b> NE<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-20T21:10:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-95.995, 41.257]}}, {"type": "Feature", "properties": {"time": "2024-05-22T17:35:00", "popup": "<b>ID:</b> TN-0013<br><b>Place:</b> Memphis<br><b>State:</b> TN<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-22T17:35:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-90.049, 35.149]}}, {"type": "Feature", "properties": {"time": "2024-05-24T18:50:00", "popup": "<b>ID:</b> LV-0014<br><b>Place:</b> Las Vegas<br><b>State:</b> NV<br><b>EF:</b> EF0<br><b>Time:</b> 2024-05-24T18:50:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-115.139, 36.174]}}, {"type": "Feature", "properties": {"time": "2024-05-26T16:55:00", "popup": "<b>ID:</b> TX-0015<br><b>Place:</b> Houston<br><b>State:</b> TX<br><b>EF:</b> EF2<br><b>Time:</b> 2024-05-26T16:55:00", "ef": "EF2", "ef_num": 2.0}, "geometry": {"type": "Point", "coordinates": [-95.369, 29.76]}}, {"type": "Feature", "properties": {"time": "2024-05-28T19:40:00", "popup": "<b>ID:</b> TX-0016<br><b>Place:</b> Austin<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-05-28T19:40:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-97.743, 30.267]}}, {"type": "Feature", "properties": {"time": "2024-06-01T18:05:00", "popup": "<b>ID:</b> NM-0017<br><b>Place:</b> Albuquerque<br><b>State:</b> NM<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-01T18:05:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-106.65, 35.085]}}, {"type": "Feature", "properties": {"time": "2024-06-03T17:45:00", "popup": "<b>ID:</b> AZ-0018<br><b>Place:</b> Phoenix<br><b>State:</b> AZ<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-03T17:45:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-112.074, 33.448]}}, {"type": "Feature", "properties": {"time": "2024-06-05T16:30:00", "popup": "<b>ID:</b> TX-0019<br><b>Place:</b> San Antonio<br><b>State:</b> TX<br><b>EF:</b> EF1<br><b>Time:</b> 2024-06-05T16:30:00", "ef": "EF1", "ef_num": 1.0}, "geometry": {"type": "Point", "coordinates": [-98.494, 29.424]}}, {"type": "Feature", "properties": {"time": "2024-06-07T18:25:00", "popup": "<b>ID:</b> AZ-0020<br><b>Place:</b> Tucson<br><b>State:</b> AZ<br><b>EF:</b> EF0<br><b>Time:</b> 2024-06-07T18:25:00", "ef": "EF0", "ef_num": 0.0}, "geometry": {"type": "Point", "coordinates": [-110.974, 32.222]}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_8398decb125754d7cadb206a6823dac7 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: "PT1H",
+                }
+            ).addTo(map_d419bdb12e3acc1a811adcb1b89a547d);
+        
+</script>
+</html>
